@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "shurup", "shurup\shurup.csproj", "{75F1A41B-7FB0-4FBE-AE8A-9CD3AC244AF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "add", "add\add.csproj", "{308D3482-7E3D-4218-8680-135246566FBB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{75F1A41B-7FB0-4FBE-AE8A-9CD3AC244AF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75F1A41B-7FB0-4FBE-AE8A-9CD3AC244AF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75F1A41B-7FB0-4FBE-AE8A-9CD3AC244AF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75F1A41B-7FB0-4FBE-AE8A-9CD3AC244AF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{308D3482-7E3D-4218-8680-135246566FBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{308D3482-7E3D-4218-8680-135246566FBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{308D3482-7E3D-4218-8680-135246566FBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{308D3482-7E3D-4218-8680-135246566FBB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4D0E58FE-4DB9-4BA3-A364-684BCF91F5C9}
+	EndGlobalSection
+EndGlobal
