@@ -78,14 +78,6 @@ namespace Hello
             Console.WriteLine();
             Console.Write("Введите число,которое нужно найти: ");
             int a = Convert.ToInt32(Console.ReadLine());
-            /*if (findinarr(a, arr) < 0)
-            {
-                Console.WriteLine("Такого числа в массиве нет.");
-            }
-            else
-            {
-                Console.WriteLine("Номер числа " + a + " в массиве: " + findinarr(a, arr));
-            }*/
             findinarrcheck(a, arr);
         }
     }
