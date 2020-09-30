@@ -16,7 +16,7 @@ namespace add
             }
             set
             {
-                if (second >= 0 && second < 60)
+                if (value >= 0 && value < 60)
                 {
                     second = value;
                 }
@@ -31,7 +31,7 @@ namespace add
             }
             set
             {
-                if (minute >= 0 && minute < 60)
+                if (value >= 0 && value < 60)
                 {
                     minute = value;
                 }
@@ -46,7 +46,7 @@ namespace add
             }
             set
             {
-                if (hour >= 0 && hour < 24)
+                if (value >= 0 && value < 24)
                 {
                     hour = value;
                 }
