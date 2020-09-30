@@ -26,7 +26,17 @@ namespace add
             Console.WriteLine($"{dt.Date}.{dt.Month}.{dt.Year} {dt.Hour}:{dt.Minute}:{dt.Second}");
             Console.Write("Введите сдвиг: ");
             int sdvig = Convert.ToInt32(Console.ReadLine());
-            dt.DayShift(sdvig);
+            Console.Write("Вы хотите сдвинуть дату вперед? [Y/N] ");
+            string danet = Console.ReadLine();
+            {
+                if (danet == "Y" || danet == "y")
+                {
+                    dt.DayShiftForward(sdvig);
+                } else
+                {
+                    dt.DayShiftBack(sdvig);
+                }
+            }
             Console.WriteLine($"{dt.Date}.{dt.Month}.{dt.Year} {dt.Hour}:{dt.Minute}:{dt.Second}");
         }
     }

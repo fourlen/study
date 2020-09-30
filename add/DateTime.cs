@@ -30,12 +30,13 @@ namespace add
             }
             set
             {
-                if (value >= 0 && value <= 12)
+                if (value >= 1 && value <= 12)
                 {
                     month = value;
                 }
             }
         }
+
         public int Date
         {
             get
@@ -44,7 +45,7 @@ namespace add
             }
             set
             {
-                if (((month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) && value <= 31 && value >= 0) || ((month == 4 || month == 6 || month == 9 || month == 11) && value <= 30 && value >= 0) || (month == 2 && (year % 4 != 0 || year % 100 == 0 && year % 400 != 0) && value >=0 && value <= 28) || (month == 2 && (year % 4 == 0 || year % 400 == 0) && value >= 0 && value <= 29 ))
+                if (value <= daysinmonth(month) && value >= 1)
                 {
                     date = value;
                 }
@@ -58,32 +59,48 @@ namespace add
             this.Date = date;
         }
 
-        public void DayShift(int sdvig)
+        public bool visokos(int year)
+        {
+            if (year % 4 == 0 || year % 400 == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public int daysinmonth(int month)
+        {
+            if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)
+            {
+                return 31;
+            }
+            else if (month == 4 || month == 6 || month == 9 || month == 11)
+            {
+                return 30;
+            }
+            else if (month == 2 && visokos(year))
+            {
+                return 39;
+            }
+            else
+            {
+                return 28;
+            }
+        }
+
+        public void DayShiftForward(int sdvig)
         {
             date += sdvig;
             while (true)
             {
-                if ((month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) && date > 31)
+                if (date > daysinmonth(month))
                 {
-                    date -= 31;
+                    date -= daysinmonth(month);
                     month++;
-                }
-                else if ((month == 4 || month == 6 || month == 9 || month == 11) && date > 30)
-                {
-                    date -= 30;
-                    month++;
-                }
-                else if (month == 2 && (year % 4 != 0 || year % 100 == 0 && year % 400 != 0) && date > 28)
-                {
-                    date -= 28;
-                    month++;
-                }
-                else if (month == 2 && (year % 4 == 0 || year % 400 == 0) && date > 29)
-                {
-                    date -= 29;
-                    month++;
-                }
-                else
+                } else
                 {
                     break;
                 }
@@ -91,6 +108,27 @@ namespace add
                 {
                     month -= 12;
                     year++;
+                }
+            }
+        }
+        public void DayShiftBack(int sdvig)
+        {
+            date -= sdvig;
+            while (true)
+            {
+                if (date < 1)
+                {
+                    date += daysinmonth(month);
+                    month--;
+                }
+                else
+                {
+                    break;
+                }
+                if (month < 1)
+                {
+                    month += 12;
+                    year--;
                 }
             }
         }
