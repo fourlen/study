@@ -19,6 +19,16 @@ namespace add
                 if (value != 0)
                 {
                     year = value;
+                } else
+                {
+                    try
+                    {
+                        throw new InvalidTimeException("Невеерный формат времени");
+                    }
+                    catch (InvalidTimeException e)
+                    {
+                        Console.WriteLine(e);
+                    }
                 }
             }
         }
@@ -33,6 +43,16 @@ namespace add
                 if (value >= 1 && value <= 12)
                 {
                     month = value;
+                } else
+                {
+                    try
+                    {
+                        throw new InvalidTimeException("Невеерный формат времени");
+                    }
+                    catch (InvalidTimeException e)
+                    {
+                        Console.WriteLine(e);
+                    }
                 }
             }
         }
@@ -48,6 +68,16 @@ namespace add
                 if (value <= daysinmonth(month) && value >= 1)
                 {
                     date = value;
+                } else
+                {
+                    try
+                    {
+                        throw new InvalidTimeException("Невеерный формат времени");
+                    }
+                    catch (InvalidTimeException e)
+                    {
+                        Console.WriteLine(e);
+                    }
                 }
             }
         }
@@ -84,7 +114,7 @@ namespace add
             }
         }
 
-        public void DayShiftForward(int sdvig)
+        public void DayShift(int sdvig)
         {
             date += sdvig;
             while (true)
@@ -93,23 +123,8 @@ namespace add
                 {
                     date -= daysinmonth(month);
                     month++;
-                } else
-                {
-                    break;
-                }
-                if (month > 12)
-                {
-                    month -= 12;
-                    year++;
-                }
-            }
-        }
-        public void DayShiftBack(int sdvig)
-        {
-            date -= sdvig;
-            while (true)
-            {
-                if (date < 1)
+                } 
+                else if (date < 1)
                 {
                     date += daysinmonth(month);
                     month--;
@@ -118,7 +133,12 @@ namespace add
                 {
                     break;
                 }
-                if (month < 1)
+                if (month > 12)
+                {
+                    month -= 12;
+                    year++;
+                }
+                else if (month < 1)
                 {
                     month += 12;
                     year--;

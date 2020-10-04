@@ -19,6 +19,16 @@ namespace add
                 if (value >= 0 && value < 60)
                 {
                     second = value;
+                } else
+                {
+                    try
+                    {
+                        throw new InvalidTimeException("Невеерный формат времени");
+                    }
+                    catch (InvalidTimeException e)
+                    {
+                        Console.WriteLine(e);
+                    }
                 }
             }
         }
@@ -34,6 +44,16 @@ namespace add
                 if (value >= 0 && value < 60)
                 {
                     minute = value;
+                } else
+                {
+                    try
+                    {
+                        throw new InvalidTimeException("Невеерный формат времени");
+                    }
+                    catch (InvalidTimeException e)
+                    {
+                        Console.WriteLine(e);
+                    }
                 }
             }
         }
@@ -49,6 +69,17 @@ namespace add
                 if (value >= 0 && value < 24)
                 {
                     hour = value;
+                }
+                else
+                {
+                    try
+                    {
+                        throw new InvalidTimeException("Невеерный формат времени");
+                    }
+                    catch (InvalidTimeException e)
+                    {
+                        Console.WriteLine(e);
+                    }
                 }
             }
         }
