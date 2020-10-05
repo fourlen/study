@@ -85,7 +85,7 @@ namespace add
             }
             else if (month == 2 && visokos(year))
             {
-                return 39;
+                return 29;
             }
             else
             {

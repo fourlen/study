@@ -5,6 +5,7 @@ using System.IO;
 
 namespace add
 {
+
     class program
     {
         static void Main(string[] args)
@@ -21,6 +22,7 @@ namespace add
             int month = Convert.ToInt32(Console.ReadLine());
             Console.Write("Введите год: ");
             int year = Convert.ToInt32(Console.ReadLine());
+            DateTime.visokos(year);
             try
             {
                 DateTime dt = new DateTime(year, month, date, hour, minute, second);
