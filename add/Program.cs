@@ -15,18 +15,23 @@ namespace add
             int minute = Convert.ToInt32(Console.ReadLine());
             Console.Write("Введите секунды: ");
             int second = Convert.ToInt32(Console.ReadLine());
-            Time time = new Time(second, minute, hour);
             Console.Write("Введите число: ");
             int date = Convert.ToInt32(Console.ReadLine());
             Console.Write("Введите месяц: ");
             int month = Convert.ToInt32(Console.ReadLine());
             Console.Write("Введите год: ");
             int year = Convert.ToInt32(Console.ReadLine());
-            DateTime dt = new DateTime(year, month, date, hour, minute, second);
-            Console.WriteLine($"{dt.Date}.{dt.Month}.{dt.Year} {dt.Hour}:{dt.Minute}:{dt.Second}");
-            Console.Write("Введите сдвиг: ");
-            int sdvig = Convert.ToInt32(Console.ReadLine());    
-            Console.WriteLine($"{dt.Date}.{dt.Month}.{dt.Year} {dt.Hour}:{dt.Minute}:{dt.Second}");
+            try
+            {
+                DateTime dt = new DateTime(year, month, date, hour, minute, second);
+                Console.WriteLine($"{dt.Date}.{dt.Month}.{dt.Year} {dt.Hour}:{dt.Minute}:{dt.Second}");
+                Console.Write("Введите сдвиг: ");
+                int sdvig = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine($"{dt.Date}.{dt.Month}.{dt.Year} {dt.Hour}:{dt.Minute}:{dt.Second}");
+            } catch (InvalidTimeException e)
+            {
+                Console.WriteLine(e);
+            }
         }
     }
 }

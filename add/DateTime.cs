@@ -21,14 +21,7 @@ namespace add
                     year = value;
                 } else
                 {
-                    try
-                    {
-                        throw new InvalidTimeException("Невеерный формат времени");
-                    }
-                    catch (InvalidTimeException e)
-                    {
-                        Console.WriteLine(e);
-                    }
+                    throw new InvalidTimeException("Невеерный формат времени");
                 }
             }
         }
@@ -45,14 +38,7 @@ namespace add
                     month = value;
                 } else
                 {
-                    try
-                    {
-                        throw new InvalidTimeException("Невеерный формат времени");
-                    }
-                    catch (InvalidTimeException e)
-                    {
-                        Console.WriteLine(e);
-                    }
+                    throw new InvalidTimeException("Невеерный формат времени");
                 }
             }
         }
@@ -70,14 +56,7 @@ namespace add
                     date = value;
                 } else
                 {
-                    try
-                    {
-                        throw new InvalidTimeException("Невеерный формат времени");
-                    }
-                    catch (InvalidTimeException e)
-                    {
-                        Console.WriteLine(e);
-                    }
+                    throw new InvalidTimeException("Невеерный формат времени");
                 }
             }
         }

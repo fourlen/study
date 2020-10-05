@@ -21,14 +21,7 @@ namespace add
                     second = value;
                 } else
                 {
-                    try
-                    {
-                        throw new InvalidTimeException("Невеерный формат времени");
-                    }
-                    catch (InvalidTimeException e)
-                    {
-                        Console.WriteLine(e);
-                    }
+                    throw new InvalidTimeException("Невеерный формат времени");
                 }
             }
         }
@@ -46,14 +39,7 @@ namespace add
                     minute = value;
                 } else
                 {
-                    try
-                    {
-                        throw new InvalidTimeException("Невеерный формат времени");
-                    }
-                    catch (InvalidTimeException e)
-                    {
-                        Console.WriteLine(e);
-                    }
+                    throw new InvalidTimeException("Невеерный формат времени");
                 }
             }
         }
@@ -72,14 +58,7 @@ namespace add
                 }
                 else
                 {
-                    try
-                    {
-                        throw new InvalidTimeException("Невеерный формат времени");
-                    }
-                    catch (InvalidTimeException e)
-                    {
-                        Console.WriteLine(e);
-                    }
+                    throw new InvalidTimeException("Невеерный формат времени");
                 }
             }
         }
