@@ -51,7 +51,7 @@ namespace add
             }
             set
             {
-                if (value <= daysinmonth(month) && value >= 1)
+                if (value <= daysinmonth(month, year) && value >= 1)
                 {
                     date = value;
                 } else
@@ -68,12 +68,12 @@ namespace add
             this.Date = date;
         }
 
-        public bool visokos(int year)
+        public static bool visokos(int year)
         {
             return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
         }
 
-        public int daysinmonth(int month)
+        public static int daysinmonth(int month, int year)
         {
             if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)
             {
@@ -98,14 +98,14 @@ namespace add
             date += sdvig;
             while (true)
             {
-                if (date > daysinmonth(month))
+                if (date > daysinmonth(month, year))
                 {
-                    date -= daysinmonth(month);
+                    date -= daysinmonth(month, year);
                     month++;
                 } 
                 else if (date < 1)
                 {
-                    date += daysinmonth(month);
+                    date += daysinmonth(month, year);
                     month--;
                 }
                 else

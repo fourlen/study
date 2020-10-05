@@ -68,7 +68,7 @@ namespace add
             Minute = t_minute;
             Hour = t_hour;
         }
-        public int Timeinsec(int hour, int minute, int second)
+        public static int Timeinsec(int hour, int minute, int second)
         {
             return hour * 3600 + minute * 60 + second;
         }
