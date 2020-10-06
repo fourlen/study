@@ -1,24 +1,38 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 
-namespace Hello
+
+namespace shurup
 {
-    class Program
+    class program
     {
-        
         static void Main(string[] args)
         {
-            Random random = new Random();
-            Console.Write("Введите размер массива: ");
-            int n = Convert.ToInt32(Console.ReadLine());
-            int[] arr = new int[n];
-            for (int i = 0; i < arr.Length; i++)
+            MyList ml = new MyList();
+            ml.Add(1);
+            ml = ml + 2;
+            ml.Add(3);
+            for (int i = 0; i < ml.Count; i++)
             {
-                arr[i] = random.Next(-100, 101);
-                Console.Write(arr[i] + " ");
+                Console.Write(ml[i] + " ");
             }
             Console.WriteLine();
-            int min = 0;
-            
+            MyList ml1 = new MyList();
+            ml1.Add(4);
+            ml1 = ml1 + 5;
+            ml1 = ml1 + 6;
+            for (int i = 0; i < ml1.Count; i++)
+            {
+                Console.Write(ml1[i] + " ");
+            }
+            Console.WriteLine();
+            MyList ml2 = new MyList();
+            ml2 = ml + ml1;
+            for (int i = 0; i < ml2.Count; i++)
+            {
+                Console.Write(ml2[i] + " ");
+            }
         }
     }
 }
