@@ -4,9 +4,9 @@ using System.Text;
 
 namespace shurup
 {
-    class MyList
+    class MyList<T>
     {
-        private List<int> list = new List<int>();
+        private List<T> list = new List<T>();
 
         public int Count
         {
@@ -16,12 +16,12 @@ namespace shurup
             }
         }
 
-        public void Add(int elem)
+        public void Add(T elem)
         {
             list.Add(elem);
         }
 
-        public int this[int index]
+        public T this[int index]
         {
             get
             {
@@ -33,9 +33,9 @@ namespace shurup
             }
         }
 
-        public static MyList operator +(MyList ml1, MyList ml2)
+        public static MyList<T> operator +(MyList<T> ml1, MyList<T> ml2)
         {
-            MyList ml3 = new MyList();
+            MyList<T> ml3 = new MyList<T>();
             for (int i = 0; i < ml1.Count; i++)
             {
                 ml3.Add(ml1[i]);
@@ -47,9 +47,9 @@ namespace shurup
             return ml3;
         }
 
-        public static MyList operator +(MyList ml, int elem)
+        public static MyList<T> operator +(MyList<T> ml, T elem)
         {
-            MyList ml2 = new MyList();
+            MyList<T> ml2 = new MyList<T>();
             for (int i = 0; i < ml.Count; i++)
             {
                 ml2.Add(ml[i]);
@@ -58,7 +58,7 @@ namespace shurup
             return ml2;
         }
 
-        public static bool Empty(MyList ml)
+        public static bool Empty(MyList<T> ml)
         {
             return ml.Count == 0;
         }
