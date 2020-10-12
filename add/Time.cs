@@ -73,11 +73,21 @@ namespace add
             return hour * 3600 + minute * 60 + second;
         }
 
+        public virtual void Nextday(int days)
+        {
+            
+        }
         public void Shift(int sdvig)
         {
+            int day = sdvig / 86400;
+            for (int i = 0; i < day; i++)
+            {
+                sdvig -= 86400;
+            }
             hour = (hour + sdvig / 3600) % 24;
-            minute = (minute + sdvig % 3600) / 60;
+            minute = (minute + sdvig / 60) % 60;
             second = (second + sdvig % 3600) % 60;
+            Nextday(day);
         }
     }
 }

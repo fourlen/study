@@ -93,6 +93,12 @@ namespace add
             }
         }
 
+        public override void Nextday(int days)
+        {
+            base.Nextday(days);
+            date += days;
+        }
+
         public void DayShift(int sdvig)
         {
             date += sdvig;

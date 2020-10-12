@@ -22,13 +22,21 @@ namespace add
             int month = Convert.ToInt32(Console.ReadLine());
             Console.Write("Введите год: ");
             int year = Convert.ToInt32(Console.ReadLine());
-            DateTime.visokos(year);
+            if (DateTime.visokos(year))
+            {
+                Console.WriteLine("Год високосный");
+            }
+            else
+            {
+                Console.WriteLine("Год не високосный");
+            }
             try
             {
                 DateTime dt = new DateTime(year, month, date, hour, minute, second);
                 Console.WriteLine($"{dt.Date}.{dt.Month}.{dt.Year} {dt.Hour}:{dt.Minute}:{dt.Second}");
                 Console.Write("Введите сдвиг: ");
                 int sdvig = Convert.ToInt32(Console.ReadLine());
+                dt.Shift(sdvig);
                 Console.WriteLine($"{dt.Date}.{dt.Month}.{dt.Year} {dt.Hour}:{dt.Minute}:{dt.Second}");
             } catch (InvalidTimeException e)
             {
