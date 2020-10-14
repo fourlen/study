@@ -8,5 +8,6 @@ namespace shurup
     {
         public abstract int DoExercise();
         public abstract string name();
+        public abstract string Type();
     } 
 }

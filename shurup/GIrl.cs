@@ -19,5 +19,10 @@ namespace shurup
             int x = random.Next(0, 5);
             return names[x];
         }
+
+        public override string Type()
+        {
+            return "Приседания";
+        }
     }
 }

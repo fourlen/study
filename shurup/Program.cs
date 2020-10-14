@@ -23,7 +23,7 @@ namespace shurup
                 int n = pupils[i].DoExercise();
                 if (n >= 20)
                 {
-                    Console.WriteLine(pupils[i].name() + ": " + n);
+                    Console.WriteLine(pupils[i].name() + ": " + n + " (" + pupils[i].Type() + ")");
                     kol++;
                 }
             }
