@@ -9,12 +9,25 @@ namespace shurup
     {
         static void Main(string[] args)
         {
-            Cow cow = new Cow();
-            cow.Say();
-            Dog dog = new Dog();
-            dog.Say();
-            Cat cat = new Cat();
-            cat.Say();
+            int kol = 0;
+            List<Pupil> pupils = new List<Pupil>();
+            for (int i = 0; i < 5; i++)
+            {
+                Girl girl = new Girl();
+                pupils.Add(girl);
+                Boy boy = new Boy();
+                pupils.Add(boy);
+            }
+            for (int i = 0; i < pupils.Count; i++)
+            {
+                int n = pupils[i].DoExercise();
+                if (n >= 20)
+                {
+                    Console.WriteLine(pupils[i].name() + ": " + n);
+                    kol++;
+                }
+            }
+            Console.WriteLine("Сдавших: " + kol);
         }
     }
 }
