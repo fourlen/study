@@ -4,10 +4,9 @@ using System.Text;
 
 namespace shurup
 {
-    abstract class Pupil
+    abstract class Figure
     {
-        public abstract int DoExercise();
-        public abstract string name();
+        public abstract bool Dot(int x, int y);
         public abstract string Type();
-    } 
+    }
 }
