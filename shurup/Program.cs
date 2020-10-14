@@ -20,9 +20,10 @@ namespace shurup
 
         static void Main(string[] args)
         {
-            Console.Write("Введите тип фигуры (круг или квадрат): ");
-            string type = Console.ReadLine();
-            if (type == "квадрат")
+            Console.Write("Введите тип фигуры (круг(1) или квадрат(0)): ");
+            int type = Convert.ToInt32(Console.ReadLine());
+            Figure fig;
+            if (type == 0)
             {
                 Console.Write("Введите x координату левой верхней вершины: ");
                 int vershx = Convert.ToInt32(Console.ReadLine());
@@ -31,13 +32,9 @@ namespace shurup
                 Console.Write("Введите сторону квадрата: ");
                 int side = Convert.ToInt32(Console.ReadLine());
                 Figure square = new Square(vershx, vershy, side);
-                Console.Write("Введите x координату точки: ");
-                int x = Convert.ToInt32(Console.ReadLine());
-                Console.Write("Ввдите y координату точки: ");
-                int y = Convert.ToInt32(Console.ReadLine());
-                Dot(x, y, square);
+                fig = square;
             }
-            else if (type == "круг")
+            else
             {
                 Console.Write("Введите x координату центра круга: ");
                 int centerx = Convert.ToInt32(Console.ReadLine());
@@ -46,12 +43,13 @@ namespace shurup
                 Console.Write("Введите радиус круга: ");
                 int radius = Convert.ToInt32(Console.ReadLine());
                 Figure circle = new Circle(centerx, centery, radius);
-                Console.Write("Введите x координату точки: ");
-                int x = Convert.ToInt32(Console.ReadLine());
-                Console.Write("Ввдите y координату точки: ");
-                int y = Convert.ToInt32(Console.ReadLine());
-                Dot(x, y, circle);
+                fig = circle;
             }
+            Console.Write("Введите x координату точки: ");
+            int x = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Ввдите y координату точки: ");
+            int y = Convert.ToInt32(Console.ReadLine());
+            Dot(x, y, fig);
         }
     }
 }
