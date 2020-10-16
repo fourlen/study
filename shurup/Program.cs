@@ -18,19 +18,25 @@ namespace shurup
             Console.Write("Введите кол-во рублей: ");
             int rub = Convert.ToInt32(Console.ReadLine());
             Values rubs = new Rub(rub);
-            Console.Write("В какую валюту конвертировать? Евро(1), доллары(2) или рубли(3)");
+            Console.Write("В какую валюту конвертировать? Евро(1), доллары(2) или рубли(3): ");
             int ch = Convert.ToInt32(Console.ReadLine());
             if (ch == 1)
             {
-                Console.WriteLine($"Евро: {euro.ToEur() + usd.ToEur() + rubs.ToEur()}");
-            }
+                euro.Add(usd.ToRub());
+                euro.Add(rubs.ToRub());
+                Console.WriteLine($"Евро: {euro.Get()}");
+            } 
             else if (ch == 2)
             {
-                Console.WriteLine($"Евро: {euro.ToUsd() + usd.ToUsd() + rubs.ToUsd()}");
+                usd.Add(euro.ToRub());
+                usd.Add(rubs.ToRub());
+                Console.WriteLine($"Доллары: {usd.Get()}");
             }
             else if (ch == 3)
             {
-                Console.WriteLine($"Евро: {euro.ToRub() + usd.ToRub() + rubs.ToRub()}");
+                rubs.Add(usd.ToRub());
+                rubs.Add(euro.ToRub());
+                Console.WriteLine($"Рубли: {rubs.Get()}");
             }
         }
     }

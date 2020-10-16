@@ -6,8 +6,8 @@ namespace shurup
 {
     class EUR : Values
     {
-        private int kol;
-        public int Kol
+        private double kol;
+        public double Kol
         {
             get
             {
@@ -18,21 +18,21 @@ namespace shurup
                 kol = value;
             }
         }
-        public EUR(int e_kol)
+        public EUR (double e_kol)
         {
             kol = e_kol;
         }
-        public override int ToEur()
-        {
-            return kol;
-        }
-        public override int ToUsd()
-        {
-            return kol * 9 / 8;
-        }
-        public override int ToRub()
+        public override double ToRub()
         {
             return kol * 90;
+        }
+        public override void Add(double smt)
+        {
+            kol += smt / 90;
+        }
+        public override double Get()
+        {
+            return kol;
         }
     }
 }

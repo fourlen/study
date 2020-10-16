@@ -6,8 +6,8 @@ namespace shurup
 {
     class Rub : Values
     {
-        private int kol;
-        public int Kol
+        private double kol;
+        public double Kol
         {
             get
             {
@@ -18,19 +18,27 @@ namespace shurup
                 kol = value;
             }
         }
-        public Rub(int r_kol)
+        public Rub(double r_kol)
         {
             kol = r_kol;
         }
-        public override int ToEur()
+        public double ToEur()
         {
             return kol / 90;
         }
-        public override int ToUsd()
+        public double ToUsd()
         {
             return kol / 80;
         }
-        public override int ToRub()
+        public override double ToRub()
+        {
+            return kol;
+        }
+        public override void Add(double smt)
+        {
+            kol += smt;
+        }
+        public override double Get()
         {
             return kol;
         }

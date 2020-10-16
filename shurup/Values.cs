@@ -6,8 +6,8 @@ namespace shurup
 {
     abstract class Values
     {
-        public abstract int ToRub();
-        public abstract int ToEur();
-        public abstract int ToUsd();
+        public abstract double ToRub();
+        public abstract void Add(double smt);
+        public abstract double Get();
     }
 }
