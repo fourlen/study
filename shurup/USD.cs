@@ -20,21 +20,19 @@ namespace shurup
         }
         public USD(double u_kol)
         {
-            kol = u_kol;
+            kol = u_kol * 80;
         }
-
-        public override double ToRub()
+        public override void Add(Values values)
         {
-            return kol * 80;
-        }
-
-        public override void Add(double smt)
-        {
-            kol += smt / 80;
+            kol += values.Get();
         }
         public override double Get()
         {
             return kol;
+        }
+        public override double GetInThisValue()
+        {
+            return kol / 80;
         }
     }
 }

@@ -30,15 +30,15 @@ namespace shurup
         {
             return kol / 80;
         }
-        public override double ToRub()
+        public override void Add(Values values)
+        {
+            kol += values.Get();
+        }
+        public override double Get()
         {
             return kol;
         }
-        public override void Add(double smt)
-        {
-            kol += smt;
-        }
-        public override double Get()
+        public override double GetInThisValue()
         {
             return kol;
         }

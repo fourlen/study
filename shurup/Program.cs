@@ -22,21 +22,21 @@ namespace shurup
             int ch = Convert.ToInt32(Console.ReadLine());
             if (ch == 1)
             {
-                euro.Add(usd.ToRub());
-                euro.Add(rubs.ToRub());
-                Console.WriteLine($"Евро: {euro.Get()}");
+                euro.Add(usd);
+                euro.Add(rubs);
+                Console.WriteLine($"Евро: {euro.GetInThisValue()}");
             } 
             else if (ch == 2)
             {
-                usd.Add(euro.ToRub());
-                usd.Add(rubs.ToRub());
-                Console.WriteLine($"Доллары: {usd.Get()}");
+                usd.Add(euro);
+                usd.Add(rubs);
+                Console.WriteLine($"{usd.GetInThisValue()}");
             }
             else if (ch == 3)
             {
-                rubs.Add(usd.ToRub());
-                rubs.Add(euro.ToRub());
-                Console.WriteLine($"Рубли: {rubs.Get()}");
+                rubs.Add(euro);
+                rubs.Add(usd);
+                Console.WriteLine($"{rubs.GetInThisValue()}");
             }
         }
     }
