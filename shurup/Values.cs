@@ -6,8 +6,12 @@ namespace shurup
 {
     abstract class Values
     {
-        public abstract void Add(Values values);
+        protected double kol;
+        public void Add(Values values)
+        {
+            kol += values.GetInRub();
+        }
+        public abstract double GetInRub();
         public abstract double Get();
-        public abstract double GetInThisValue();
     }
 }

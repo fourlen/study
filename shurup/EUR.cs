@@ -6,7 +6,6 @@ namespace shurup
 {
     class EUR : Values
     {
-        private double kol;
         public double Kol
         {
             get
@@ -22,15 +21,11 @@ namespace shurup
         {
             kol = e_kol * 90;
         }
-        public override void Add(Values values)
-        {
-            kol += values.Get();
-        }
-        public override double Get()
+        public override double GetInRub()
         {
             return kol;
         }
-        public override double GetInThisValue()
+        public override double Get()
         {
             return kol / 90;
         }

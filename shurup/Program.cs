@@ -24,19 +24,19 @@ namespace shurup
             {
                 euro.Add(usd);
                 euro.Add(rubs);
-                Console.WriteLine($"Евро: {euro.GetInThisValue()}");
+                Console.WriteLine($"Евро: {euro.Get()}");
             } 
             else if (ch == 2)
             {
                 usd.Add(euro);
                 usd.Add(rubs);
-                Console.WriteLine($"{usd.GetInThisValue()}");
+                Console.WriteLine($"{usd.Get()}");
             }
             else if (ch == 3)
             {
                 rubs.Add(euro);
                 rubs.Add(usd);
-                Console.WriteLine($"{rubs.GetInThisValue()}");
+                Console.WriteLine($"{rubs.Get()}");
             }
         }
     }
