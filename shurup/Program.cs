@@ -9,7 +9,7 @@ namespace shurup
     {
         public static void StudentsList()
         {
-            
+            Console.WriteLine("бебра");
         }
         public static void AddStudent()
         {
@@ -70,38 +70,31 @@ namespace shurup
         static void Main(string[] args)
         {
             Menu menu = new Menu("MainMenu");
-            MenuItem stdlist = new SimpleMenuItem("Список студентов", StudentsList);
-            menu.items.Add(stdlist);
-            MenuItem stdadd = new SimpleMenuItem("Добавить студента", AddStudent);
-            menu.items.Add(stdadd);
-            MenuItem stdedit = new SimpleMenuItem("Редактировать студента", EditStudent);
-            menu.items.Add(stdedit);
-            MenuItem stdremove = new SimpleMenuItem("Удалить студента", RemoveStudent);
-            menu.items.Add(stdremove);
-            MenuItem stdshowotl = new SimpleMenuItem("Показать отличников", ShowOtlich);
-            menu.items.Add(stdshowotl);
-            MenuItem stdshowneusp = new SimpleMenuItem("Показать неуспевающих", ShowNeusp);
-            menu.items.Add(stdshowneusp);
-            MenuItem exit = new SimpleMenuItem("Выход", Exit);
-            menu.items.Add(exit);
+            menu.AddItem(new SimpleMenuItem("Список студентов", StudentsList));
+            menu.AddItem(new SimpleMenuItem("Добавить студента", AddStudent));
+            menu.AddItem(new SimpleMenuItem("Редактировать студента", EditStudent));
+            menu.AddItem(new SimpleMenuItem("Удалить студента", RemoveStudent));
+            menu.AddItem(new SimpleMenuItem("Показать отличников", ShowOtlich));
+            menu.AddItem(new SimpleMenuItem("Показать неуспевающих", ShowNeusp));
+            menu.AddItem(new SimpleMenuItem("Выход", Exit));
             Menu submenu = new Menu("StudentMenu");
-            MenuItem stdchangelastname = new SimpleMenuItem("Изменить фамилию", ChangeLastName);
-            submenu.items.Add(stdchangelastname);
-            MenuItem stdchangefirstname = new SimpleMenuItem("Изменить имя", ChangeFirstName);
-            submenu.items.Add(stdchangefirstname);
-            MenuItem stdchangemiddlename = new SimpleMenuItem("Изменить отчество", ChangeMiddleName);
-            submenu.items.Add(stdchangemiddlename);
-            MenuItem groupchange = new SimpleMenuItem("Изменить группу", ChangeGroup);
-            submenu.items.Add(groupchange);
-            MenuItem markadd = new SimpleMenuItem("Добавить оценку", AddMark);
-            submenu.items.Add(markadd);
-            MenuItem markchange = new SimpleMenuItem("Изменить оценку", ChangeMark);
-            submenu.items.Add(markchange);
-            MenuItem markremove = new SimpleMenuItem("Удалить оценку", RemoveMark);
-            submenu.items.Add(markremove);
-            MenuItem back = new SimpleMenuItem("Назад", Back);
-            submenu.items.Add(back);
-            menu.Run();
+            submenu.AddItem(new SimpleMenuItem("Изменить фамилию", ChangeLastName));
+            submenu.AddItem(new SimpleMenuItem("Изменить имя", ChangeFirstName));
+            submenu.AddItem(new SimpleMenuItem("Изменить отчество", ChangeMiddleName));
+            submenu.AddItem(new SimpleMenuItem("Изменить группу", ChangeGroup));
+            submenu.AddItem(new SimpleMenuItem("Добавить оценку", AddMark));
+            submenu.AddItem(new SimpleMenuItem("Изменить оценку", ChangeMark));
+            submenu.AddItem(new SimpleMenuItem("Удалить оценку", RemoveMark));
+            submenu.AddItem(new SimpleMenuItem("Назад", Back));
+            while (true)
+            {
+                menu.Run();
+                Console.WriteLine();
+                Console.Write("Введите номер пункта: ");
+                int nomer = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine();
+                menu.RunItem(nomer - 1);
+            }
         }
     }
 }

@@ -97,11 +97,13 @@ namespace add
         {
             base.Nextday(days);
             date += days;
+            DayShift(days);
         }
 
         public void DayShift(int sdvig)
         {
             date += sdvig;
+
             while (true)
             {
                 if (date > daysinmonth(month, year))

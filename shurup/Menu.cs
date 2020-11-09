@@ -6,7 +6,7 @@ namespace shurup
 {
     class Menu : MenuItem
     {
-        public List<MenuItem> items = new List<MenuItem>();
+        private List<MenuItem> items = new List<MenuItem>();
         public Menu(string _title) :
             base(_title)
         { }
@@ -17,6 +17,14 @@ namespace shurup
                 Console.Write($"{i + 1}. {items[i].title}");
                 Console.WriteLine();
             }
+        }
+        public void AddItem(MenuItem menuitem)
+        {
+            items.Add(menuitem);
+        }
+        public void RunItem(int n)
+        {
+            items[n].Run();
         }
     }
 }
