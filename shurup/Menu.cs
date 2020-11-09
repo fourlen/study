@@ -36,10 +36,21 @@ namespace shurup
         }
         public int handleUserInput()
         {
-            Console.WriteLine();
-            Console.Write("Ввдеите номер пункта: ");
-            int n = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine();
+            int n;
+            while (true)
+            {
+                Console.WriteLine();
+                Console.Write("Ввдеите номер пункта: ");
+                n = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine();
+                if (n < 0 || n >= items.Count)
+                {
+                    Console.WriteLine("Введено неверный номер пункта");
+                } else
+                {
+                    break;
+                }
+            }
             return n;
         }
     }

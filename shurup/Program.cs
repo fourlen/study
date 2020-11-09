@@ -9,7 +9,7 @@ namespace shurup
     {
         public static void StudentsList()
         {
-            Console.WriteLine("бебра");
+            
         }
         public static void AddStudent()
         {
