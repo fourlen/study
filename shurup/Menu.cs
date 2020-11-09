@@ -34,7 +34,7 @@ namespace shurup
             {
                 printMenu();
                 int n = handleUserInput();
-                if (n == items.Count)
+                if (n == items.Count + 1)
                 {
                     break;
                 }
@@ -50,7 +50,7 @@ namespace shurup
                 Console.Write("Ввдеите номер пункта: ");
                 n = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine();
-                if (n < 0 || n >= items.Count)
+                if (n < 0 || n > items.Count + 1)
                 {
                     Console.WriteLine("Введено неверный номер пункта");
                 } else
