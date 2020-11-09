@@ -7,16 +7,19 @@ namespace shurup
     class Menu : MenuItem
     {
         private List<MenuItem> items = new List<MenuItem>();
+        private bool main;
         public Menu(string _title) :
             base(_title)
-        { }
+        {
+            main = true;
+        }
         private void printMenu()
         {
             for (int i = 0; i < items.Count; i++)
             {
                 Console.WriteLine($"{i + 1}. {items[i].title}");
             }
-            if (title == "MainMenu")
+            if (main)
             {
                 Console.WriteLine($"{items.Count + 1}. Выход");
             } else
@@ -38,7 +41,7 @@ namespace shurup
                 {
                     break;
                 }
-                items[handleUserInput() - 1].Run();
+                items[n - 1].Run();
             }
         }
         private int handleUserInput()
