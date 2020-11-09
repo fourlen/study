@@ -10,31 +10,38 @@ namespace shurup
         public Menu(string _title) :
             base(_title)
         { }
-        public void printMenu()
+        private void printMenu()
         {
             for (int i = 0; i < items.Count; i++)
             {
-                Console.Write($"{i + 1}. {items[i].title}");
-                Console.WriteLine();
+                Console.WriteLine($"{i + 1}. {items[i].title}");
             }
+            if (title == "MainMenu")
+            {
+                Console.WriteLine($"{items.Count + 1}. Выход");
+            } else
+            {
+                Console.WriteLine($"{items.Count + 1}. Назад");
+            }   
         }
         public void AddItem(MenuItem menuitem)
         {
             items.Add(menuitem);
         }
-        public void RunItem(int n)
-        {
-            items[n].Run();
-        }
         public override void Run()
         {
-            while (true)
+            while(true)
             {
                 printMenu();
+                int n = handleUserInput();
+                if (n == items.Count)
+                {
+                    break;
+                }
                 items[handleUserInput() - 1].Run();
             }
         }
-        public int handleUserInput()
+        private int handleUserInput()
         {
             int n;
             while (true)

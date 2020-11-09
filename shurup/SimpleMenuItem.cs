@@ -14,7 +14,7 @@ namespace shurup
         }
         public override void Run()
         {
-            //Console.WriteLine(title);
+            Console.WriteLine(title);
             action();
         }
     }

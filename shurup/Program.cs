@@ -77,7 +77,6 @@ namespace shurup
             menu.AddItem(new SimpleMenuItem("Удалить студента", RemoveStudent));
             menu.AddItem(new SimpleMenuItem("Показать отличников", ShowOtlich));
             menu.AddItem(new SimpleMenuItem("Показать неуспевающих", ShowNeusp));
-            menu.AddItem(new SimpleMenuItem("Выход", Exit));
             submenu.AddItem(new SimpleMenuItem("Изменить фамилию", ChangeLastName));
             submenu.AddItem(new SimpleMenuItem("Изменить имя", ChangeFirstName));
             submenu.AddItem(new SimpleMenuItem("Изменить отчество", ChangeMiddleName));
@@ -85,7 +84,6 @@ namespace shurup
             submenu.AddItem(new SimpleMenuItem("Добавить оценку", AddMark));
             submenu.AddItem(new SimpleMenuItem("Изменить оценку", ChangeMark));
             submenu.AddItem(new SimpleMenuItem("Удалить оценку", RemoveMark));
-            submenu.AddItem(new SimpleMenuItem("Назад", Back));
             menu.Run();
         }
     }
