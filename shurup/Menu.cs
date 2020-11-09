@@ -10,9 +10,9 @@ namespace shurup
         public Menu(string _title) :
             base(_title)
         { }
-        public override void Run()
+        public void printMenu()
         {
-            for(int i = 0; i < items.Count; i++)
+            for (int i = 0; i < items.Count; i++)
             {
                 Console.Write($"{i + 1}. {items[i].title}");
                 Console.WriteLine();
@@ -25,6 +25,22 @@ namespace shurup
         public void RunItem(int n)
         {
             items[n].Run();
+        }
+        public override void Run()
+        {
+            while (true)
+            {
+                printMenu();
+                items[handleUserInput() - 1].Run();
+            }
+        }
+        public int handleUserInput()
+        {
+            Console.WriteLine();
+            Console.Write("Ввдеите номер пункта: ");
+            int n = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine();
+            return n;
         }
     }
 }

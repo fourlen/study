@@ -70,14 +70,14 @@ namespace shurup
         static void Main(string[] args)
         {
             Menu menu = new Menu("MainMenu");
+            Menu submenu = new Menu("Редактировать студента");
             menu.AddItem(new SimpleMenuItem("Список студентов", StudentsList));
             menu.AddItem(new SimpleMenuItem("Добавить студента", AddStudent));
-            menu.AddItem(new SimpleMenuItem("Редактировать студента", EditStudent));
+            menu.AddItem(submenu);
             menu.AddItem(new SimpleMenuItem("Удалить студента", RemoveStudent));
             menu.AddItem(new SimpleMenuItem("Показать отличников", ShowOtlich));
             menu.AddItem(new SimpleMenuItem("Показать неуспевающих", ShowNeusp));
             menu.AddItem(new SimpleMenuItem("Выход", Exit));
-            Menu submenu = new Menu("StudentMenu");
             submenu.AddItem(new SimpleMenuItem("Изменить фамилию", ChangeLastName));
             submenu.AddItem(new SimpleMenuItem("Изменить имя", ChangeFirstName));
             submenu.AddItem(new SimpleMenuItem("Изменить отчество", ChangeMiddleName));
@@ -86,15 +86,7 @@ namespace shurup
             submenu.AddItem(new SimpleMenuItem("Изменить оценку", ChangeMark));
             submenu.AddItem(new SimpleMenuItem("Удалить оценку", RemoveMark));
             submenu.AddItem(new SimpleMenuItem("Назад", Back));
-            while (true)
-            {
-                menu.Run();
-                Console.WriteLine();
-                Console.Write("Введите номер пункта: ");
-                int nomer = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine();
-                menu.RunItem(nomer - 1);
-            }
+            menu.Run();
         }
     }
 }
