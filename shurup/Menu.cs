@@ -8,11 +8,17 @@ namespace shurup
     {
         private List<MenuItem> items = new List<MenuItem>();
         private bool main;
-        public Menu(string _title) :
-            base(_title)
+        public Menu():
+            base("")
         {
             main = true;
         }
+        private Menu(string _title) : 
+            base(_title)
+        {
+            main = false;
+        }
+        
         private void printMenu()
         {
             for (int i = 0; i < items.Count; i++)
@@ -27,9 +33,10 @@ namespace shurup
                 Console.WriteLine($"{items.Count + 1}. Назад");
             }   
         }
-        public void AddItem(MenuItem menuitem)
+        public void AddItem(string title, Action action)
         {
-            items.Add(menuitem);
+            MenuItem smenuitem = new SimpleMenuItem(title, action);
+            items.Add(smenuitem);
         }
         public override void Run()
         {
@@ -62,6 +69,12 @@ namespace shurup
                 }
             }
             return n;
+        }
+        public Menu AddSubmenu(string title)
+        {
+            Menu sub_menu = new Menu(title);
+            items.Add(sub_menu);
+            return sub_menu;
         }
     }
 }

@@ -69,21 +69,20 @@ namespace shurup
         }
         static void Main(string[] args)
         {
-            Menu menu = new Menu("MainMenu");
-            Menu submenu = new Menu("Редактировать студента");
-            menu.AddItem(new SimpleMenuItem("Список студентов", StudentsList));
-            menu.AddItem(new SimpleMenuItem("Добавить студента", AddStudent));
-            menu.AddItem(submenu);
-            menu.AddItem(new SimpleMenuItem("Удалить студента", RemoveStudent));
-            menu.AddItem(new SimpleMenuItem("Показать отличников", ShowOtlich));
-            menu.AddItem(new SimpleMenuItem("Показать неуспевающих", ShowNeusp));
-            submenu.AddItem(new SimpleMenuItem("Изменить фамилию", ChangeLastName));
-            submenu.AddItem(new SimpleMenuItem("Изменить имя", ChangeFirstName));
-            submenu.AddItem(new SimpleMenuItem("Изменить отчество", ChangeMiddleName));
-            submenu.AddItem(new SimpleMenuItem("Изменить группу", ChangeGroup));
-            submenu.AddItem(new SimpleMenuItem("Добавить оценку", AddMark));
-            submenu.AddItem(new SimpleMenuItem("Изменить оценку", ChangeMark));
-            submenu.AddItem(new SimpleMenuItem("Удалить оценку", RemoveMark));
+            Menu menu = new Menu();
+            menu.AddItem("Список студентов", StudentsList);
+            menu.AddItem("Добавить студента", AddStudent);
+            Menu submenu = menu.AddSubmenu("Редактироват студента");
+            menu.AddItem("Удалить студента", RemoveStudent);
+            menu.AddItem("Показать отличников", ShowOtlich);
+            menu.AddItem("Показать неуспевающих", ShowNeusp);
+            submenu.AddItem("Изменить фамилию", ChangeLastName);
+            submenu.AddItem("Изменить имя", ChangeFirstName);
+            submenu.AddItem("Изменить отчество", ChangeMiddleName);
+            submenu.AddItem("Изменить группу", ChangeGroup);
+            submenu.AddItem("Добавить оценку", AddMark);
+            submenu.AddItem("Изменить оценку", ChangeMark);
+            submenu.AddItem("Удалить оценку", RemoveMark);
             menu.Run();
         }
     }
