@@ -6,9 +6,9 @@ namespace shurup
 {
     class StudentsRegistry
     {
+        private static StudentsRegistry instance = null;
         public List<Student> students { get; set; }
-        public StudentsRegistry instance { get; set; }
-        public StudentsRegistry() { }
+        private StudentsRegistry() { }
         public StudentsRegistry getInstance()
         {
             return instance;
@@ -32,6 +32,14 @@ namespace shurup
         public int getStudentCount()
         {
             return students.Count;
+        }
+        public static StudentsRegistry GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new StudentsRegistry();
+            }
+            return instance;
         }
     }
 }
