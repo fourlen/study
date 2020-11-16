@@ -6,13 +6,11 @@ namespace shurup
 {
     class Student
     {
-        private static Student insnatce = null;
         public string firstname { get; set; }
         public string middlename { get; set; }
         public string lastname { get; set; }
         public string group { get; set; }
         public Dictionary<string, int> marks { get; set; }
-        private Student() { }
         public void printLong()
         {
             Console.WriteLine($"Фамилия: {lastname}\n" +
@@ -32,14 +30,6 @@ namespace shurup
             {
                 Console.WriteLine($"    {pair.Key}: {pair.Value}");
             }
-        }
-        public static Student GetInstance()
-        {
-            if (insnatce == null)
-            {
-                insnatce = new Student();
-            }
-            return insnatce;
         }
     }
 }
