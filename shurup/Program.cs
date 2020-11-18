@@ -38,14 +38,20 @@ namespace shurup
         }
         public static void DeleteStudentCommand()
         {
-            for (int i = 0; i < StudentsRegistry.GetInstance().getStudentCount(); i++)
-            {
-                StudentsRegistry.GetInstance().GetStudent(i).printShort();
-            }
+            BriefPrintVisitor bpv = new BriefPrintVisitor();
+            StudentsRegistry.GetInstance().VisitStudent(bpv);
             Console.Write("Введите номер: ");
             int n = Convert.ToInt32(Console.ReadLine());
-            Console.Write($"Вы уверены, что хотите удалить студента {StudentsRegistry.GetInstance().GetStudent(n).lastname} {StudentsRegistry.GetInstance().GetStudent(n).firstname} {StudentsRegistry.GetInstance().GetStudent(n).middlename} ({StudentsRegistry.GetInstance().GetStudent(n).group})?");
-            StudentsRegistry.GetInstance().removeStudent(n);
+            Console.Write($"Вы уверены, что хотите удалить студента {StudentsRegistry.GetInstance().GetStudent(n - 1).lastname} {StudentsRegistry.GetInstance().GetStudent(n - 1).firstname} {StudentsRegistry.GetInstance().GetStudent(n - 1).middlename} ({StudentsRegistry.GetInstance().GetStudent(n - 1).group})? [Y/N] ");
+            char danet = Convert.ToChar(Console.ReadLine());
+            if (danet == 'Y' || danet == 'y')
+            {
+                StudentsRegistry.GetInstance().removeStudent(n - 1);
+            }
+            else
+            {
+                Console.WriteLine("Ладно.");
+            }
         }
         public static void ShowHighAchieversCommand()
         {
