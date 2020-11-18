@@ -7,12 +7,8 @@ namespace shurup
     class StudentsRegistry
     {
         private static StudentsRegistry instance = null;
-        public List<Student> students { get; set; }
+        private List<Student> students = new List<Student>();
         private StudentsRegistry() { }
-        public StudentsRegistry getInstance()
-        {
-            return instance;
-        }
         public void addStudent(Student student)
         {
             students.Add(student);
