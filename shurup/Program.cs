@@ -20,7 +20,7 @@ namespace shurup
             string name = Console.ReadLine();
             Console.Write("Введите имя: ");
             string lastname = Console.ReadLine();
-            Console.Write("Введите отчество ");
+            Console.Write("Введите отчество: ");
             string middlename = Console.ReadLine();
             Console.Write("Введите группу: ");
             string group = Console.ReadLine();
@@ -38,29 +38,24 @@ namespace shurup
         }
         public static void DeleteStudentCommand()
         {
+            for (int i = 0; i < StudentsRegistry.GetInstance().getStudentCount(); i++)
+            {
+                StudentsRegistry.GetInstance().GetStudent(i).printShort();
+            }
             Console.Write("Введите номер: ");
             int n = Convert.ToInt32(Console.ReadLine());
+            Console.Write($"Вы уверены, что хотите удалить студента {StudentsRegistry.GetInstance().GetStudent(n).lastname} {StudentsRegistry.GetInstance().GetStudent(n).firstname} {StudentsRegistry.GetInstance().GetStudent(n).middlename} ({StudentsRegistry.GetInstance().GetStudent(n).group})?");
             StudentsRegistry.GetInstance().removeStudent(n);
         }
         public static void ShowHighAchieversCommand()
         {
             HighAchieverVisitor hav = new HighAchieverVisitor();
-            hav.startVisit();
-            for (int i = 0; i < StudentsRegistry.GetInstance().getStudentCount(); i++)
-            {
-                hav.visitStudent(i, StudentsRegistry.GetInstance().GetStudent(i));
-            }
-            hav.finishVisit();
+            StudentsRegistry.GetInstance().VisitStudent(hav);
         }
         public static void ShowLowAchieversCommand()
         {
             LowAchieverVisitor hav = new LowAchieverVisitor();
-            hav.startVisit();
-            for (int i = 0; i < StudentsRegistry.GetInstance().getStudentCount(); i++)
-            {
-                hav.visitStudent(i, StudentsRegistry.GetInstance().GetStudent(i));
-            }
-            hav.finishVisit();
+            StudentsRegistry.GetInstance().VisitStudent(hav);
         }
         public static void Exit()
         {

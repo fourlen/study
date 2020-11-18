@@ -37,5 +37,14 @@ namespace shurup
             }
             return instance;
         }
+        public void VisitStudent(StudentVisitor visitor)
+        {
+            visitor.startVisit();
+            for (int i = 0; i < students.Count; i++)
+            {
+                visitor.visitStudent(i, students[i]);
+            }
+            visitor.finishVisit();
+        }
     }
 }
