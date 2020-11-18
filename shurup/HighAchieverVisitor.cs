@@ -13,8 +13,15 @@ namespace shurup
         }
         public void visitStudent(int n, Student student)
         {
-            _has_students = true;
-            bool otlich = true;
+            bool otlich;
+            if (student.marks.Count != 0)
+            {
+                otlich = true;
+            }
+            else
+            {
+                otlich = false;
+            }
             foreach (KeyValuePair<string, int> keyvalue in student.marks)
             {
                 if (keyvalue.Value != 5)
@@ -22,6 +29,7 @@ namespace shurup
                     otlich = false;
                     break;
                 }
+                _has_students = true;
             }
             if (otlich)
             {
@@ -33,7 +41,7 @@ namespace shurup
         {
             if (!_has_students)
             {
-                Console.WriteLine("Студентов нет");
+                Console.WriteLine("Отличников нет");
             }
         }
     }

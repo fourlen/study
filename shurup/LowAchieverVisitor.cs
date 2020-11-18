@@ -13,8 +13,14 @@ namespace shurup
         }
         public void visitStudent(int n, Student student)
         {
-            _has_students = true;
-            bool neusp = false;
+            bool neusp;
+            if (student.marks.Count != 0)
+            {
+                neusp = false;
+            } else
+            {
+                neusp = true;
+            }
             foreach (KeyValuePair<string, int> keyvalue in student.marks)
             {
                 if (keyvalue.Value == 2)
@@ -22,6 +28,7 @@ namespace shurup
                     neusp = true;
                     break;
                 }
+                _has_students = true;
             }
             if (!neusp)
             {
