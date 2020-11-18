@@ -10,7 +10,7 @@ namespace shurup
         public string middlename { get; set; }
         public string lastname { get; set; }
         public string group { get; set; }
-        public Dictionary<string, int> marks { get; set; }
+        public Dictionary<string, int> marks { get; set; } = new Dictionary<string, int>();
         public void printLong()
         {
             Console.WriteLine($"Фамилия: {lastname}\n" +
@@ -26,10 +26,10 @@ namespace shurup
         }
         public void subjects()
         {
-            foreach (KeyValuePair<string, int> pair in marks)
-            {
-                Console.WriteLine($"    {pair.Key}: {pair.Value}");
-            }
+                foreach (KeyValuePair<string, int> pair in marks)
+                {
+                    Console.WriteLine($"    {pair.Key}: {pair.Value}");
+                }
         }
     }
 }

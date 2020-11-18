@@ -7,29 +7,60 @@ namespace shurup
 {
     class program
     {
-        public static void StudentsList()
+        public static void ListStudentsCommand()
         {
-            
+            for (int i = 0; i < StudentsRegistry.GetInstance().getStudentCount(); i++)
+            {
+                StudentsRegistry.GetInstance().GetStudent(i).printLong();
+            }
         }
-        public static void AddStudent()
+        public static void AddStudentCommand()
         {
-
+            Console.Write("Введите фамилию: ");
+            string name = Console.ReadLine();
+            Console.Write("Введите имя: ");
+            string lastname = Console.ReadLine();
+            Console.Write("Введите отчество ");
+            string middlename = Console.ReadLine();
+            Console.Write("Введите группу: ");
+            string group = Console.ReadLine();
+            Student student = new Student();
+            student.firstname = name;
+            student.lastname = lastname;
+            student.middlename = middlename;
+            student.group = group;
+            StudentsRegistry.GetInstance().addStudent(student);
+            Console.WriteLine();
         }
         public static void EditStudent()
         {
 
         }
-        public static void RemoveStudent()
+        public static void DeleteStudentCommand()
         {
-
+            Console.Write("Введите номер: ");
+            int n = Convert.ToInt32(Console.ReadLine());
+            StudentsRegistry.GetInstance().removeStudent(n);
         }
-        public static void ShowOtlich()
+        public static void ShowHighAchieversCommand()
         {
-
+            HighAchieverVisitor hav = new HighAchieverVisitor();
+            hav.startVisit();
+            for (int i = 0; i < StudentsRegistry.GetInstance().getStudentCount(); i++)
+            {
+                hav.visitStudent(i, StudentsRegistry.GetInstance().GetStudent(i));
+            }
+            hav.finishVisit();
         }
-        public static void ShowNeusp()
+        public static void ShowLowAchieversCommand()
         {
-
+            LowAchieverVisitor hav = new LowAchieverVisitor();
+            hav.startVisit();
+            for (int i = 0; i < StudentsRegistry.GetInstance().getStudentCount(); i++)
+            {
+                hav.visitStudent(i, StudentsRegistry.GetInstance().GetStudent(i));
+            }
+            hav.finishVisit();
         }
         public static void Exit()
         {
@@ -69,13 +100,14 @@ namespace shurup
         }
         static void Main(string[] args)
         {
+
             Menu menu = new Menu();
-            menu.AddItem("Список студентов", StudentsList);
-            menu.AddItem("Добавить студента", AddStudent);
+            menu.AddItem("Список студентов", ListStudentsCommand);
+            menu.AddItem("Добавить студента", AddStudentCommand);
             Menu submenu = menu.AddSubmenu("Редактироват студента");
-            menu.AddItem("Удалить студента", RemoveStudent);
-            menu.AddItem("Показать отличников", ShowOtlich);
-            menu.AddItem("Показать неуспевающих", ShowNeusp);
+            menu.AddItem("Удалить студента", DeleteStudentCommand);
+            menu.AddItem("Показать отличников", ShowHighAchieversCommand);
+            menu.AddItem("Показать неуспевающих", ShowLowAchieversCommand);
             submenu.AddItem("Изменить фамилию", ChangeLastName);
             submenu.AddItem("Изменить имя", ChangeFirstName);
             submenu.AddItem("Изменить отчество", ChangeMiddleName);
