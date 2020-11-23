@@ -8,6 +8,9 @@ namespace shurup
     {
         private List<MenuItem> items = new List<MenuItem>();
         private bool main;
+        public Action startup_command { get; set; }
+        public Action before_select_command { get; set; } 
+        public Action tear_down_command { get; set; }
         public Menu():
             base("")
         {
@@ -40,15 +43,25 @@ namespace shurup
         }
         public override void Run()
         {
-            while(true)
+            try
             {
-                printMenu();
-                int n = handleUserInput();
-                if (n == items.Count + 1)
+                startup_command();
+                while (true)
                 {
-                    break;
+                    before_select_command();
+                    printMenu();
+                    int n = handleUserInput();
+                    if (n == items.Count + 1)
+                    {
+                        break;
+                    }
+                    items[n - 1].Run();
                 }
-                items[n - 1].Run();
+                tear_down_command();
+            }
+            catch (ZeroStudentsException mes)
+            {
+                Console.WriteLine("Список студентов пуст");
             }
         }
         private int handleUserInput()

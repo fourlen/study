@@ -63,6 +63,38 @@ namespace shurup
             LowAchieverVisitor hav = new LowAchieverVisitor();
             StudentsRegistry.GetInstance().VisitStudent(hav);
         }
+        public static void SelectStudentCommand()
+        {
+            BriefPrintVisitor bpv = new BriefPrintVisitor();
+            StudentsRegistry.GetInstance().VisitStudent(bpv);
+            int n;
+            while (true)
+            {
+                Console.Write("Введите номер: ");
+                n = Convert.ToInt32(Console.ReadLine());
+                if (n >= 1 && n <= StudentsRegistry.GetInstance().getStudentCount())
+                {
+                    break;
+                } else
+                {
+                    Console.WriteLine("Студента с таким номером не существует");
+                }
+            }
+            EditContext.GetInstance().student = StudentsRegistry.GetInstance().GetStudent(n);
+        }
+        public static void ShowSelectedCommand()
+        {
+            if (StudentsRegistry.GetInstance().getStudentCount() == 0)
+            {
+                Console.WriteLine("Список студентов пуст");
+                throw new ZeroStudentsException("Список студентов пуст");
+            }
+            EditContext.GetInstance().student.printLong();
+        }
+        public static void DeselectStudentCommand()
+        {
+            EditContext.GetInstance().student = null;
+        }
         public static void Exit()
         {
 
