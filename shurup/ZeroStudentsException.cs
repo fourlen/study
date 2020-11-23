@@ -4,7 +4,10 @@ using System.Text;
 
 namespace shurup
 {
-    class ZeroStudentsException
+    class ZeroStudentsException : Exception
     {
+        public ZeroStudentsException(string message) : 
+            base (message)
+        { }
     }
 }

@@ -59,10 +59,7 @@ namespace shurup
                 }
                 tear_down_command();
             }
-            catch (ZeroStudentsException mes)
-            {
-                Console.WriteLine("Список студентов пуст");
-            }
+            catch (ZeroStudentsException mes) { }
         }
         private int handleUserInput()
         {
