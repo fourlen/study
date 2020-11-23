@@ -65,6 +65,11 @@ namespace shurup
         }
         public static void SelectStudentCommand()
         {
+            if (StudentsRegistry.GetInstance().getStudentCount() == 0)
+            {
+                Console.WriteLine("Список студентов пуст");
+                throw new ZeroStudentsException("Список студентов пуст");
+            }
             BriefPrintVisitor bpv = new BriefPrintVisitor();
             StudentsRegistry.GetInstance().VisitStudent(bpv);
             int n;
@@ -84,11 +89,6 @@ namespace shurup
         }
         public static void ShowSelectedCommand()
         {
-            if (StudentsRegistry.GetInstance().getStudentCount() == 0)
-            {
-                Console.WriteLine("Список студентов пуст");
-                throw new ZeroStudentsException("Список студентов пуст");
-            }
             EditContext.GetInstance().student.printLong();
         }
         public static void DeselectStudentCommand()
