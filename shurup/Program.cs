@@ -32,10 +32,6 @@ namespace shurup
             StudentsRegistry.GetInstance().addStudent(student);
             Console.WriteLine();
         }
-        public static void EditStudent()
-        {
-
-        }
         public static void DeleteStudentCommand()
         {
             BriefPrintVisitor bpv = new BriefPrintVisitor();
@@ -99,33 +95,87 @@ namespace shurup
         {
 
         }
-        public static void ChangeLastName()
+        public static void EditLastNameCommand()
         {
-
+            Console.Write("Введите фамилию: ");
+            string lastname = Console.ReadLine();
+            EditContext.GetInstance().student.lastname = lastname;
         }
-        public static void ChangeFirstName()
+        public static void EditFirstNameCommand()
         {
-
+            Console.Write("Введите имя: ");
+            string firstname = Console.ReadLine();
+            EditContext.GetInstance().student.firstname = firstname;
         }
-        public static void ChangeMiddleName()
+        public static void EditMiddleNameCommand()
         {
-
+            Console.Write("Введите отчество: ");
+            string middlename = Console.ReadLine();
+            EditContext.GetInstance().student.middlename = middlename;
         }
-        public static void ChangeGroup()
+        public static void EditGroupCommand()
         {
-
+            Console.Write("Введите группу: ");
+            string group = Console.ReadLine();
+            EditContext.GetInstance().student.group = group;
         }
         public static void AddMark() 
         {
-
+            string subj = "";
+            while (true)
+            {
+                Console.Write("Введите предмет: ");
+                subj = Console.ReadLine();
+                if (EditContext.GetInstance().student.marks.ContainsKey(subj))
+                {
+                    Console.WriteLine("Оценка по этому предмету уже есть");
+                } 
+                else
+                {
+                    break;
+                }
+            }
+            Console.Write("Введите оценку: ");
+            int mark = Convert.ToInt32(Console.ReadLine());
+            EditContext.GetInstance().student.marks[subj] = mark;
         }
-        public static void ChangeMark()
+        public static void EditMarkCommand()
         {
-
+            string subj = "";
+            while (true)
+            {
+                Console.Write("Введите предмет: ");
+                subj = Console.ReadLine();
+                if (!EditContext.GetInstance().student.marks.ContainsKey(subj))
+                {
+                    Console.WriteLine("Оценки по этому предмету ещё нет");
+                }
+                else
+                {
+                    break;
+                }
+            }
+            Console.Write("Введите оценку: ");
+            int mark = Convert.ToInt32(Console.ReadLine());
+            EditContext.GetInstance().student.marks.Add(subj, mark);
         }
-        public static void RemoveMark()
+        public static void DeleteMarkCommand()
         {
-
+            string subj = "";
+            while (true)
+            {
+                Console.Write("Введите предмет: ");
+                subj = Console.ReadLine();
+                if (!EditContext.GetInstance().student.marks.ContainsKey(subj))
+                {
+                    Console.WriteLine("Оценки по этому предмету ещё нет");
+                }
+                else
+                {
+                    break;
+                }
+            }
+            EditContext.GetInstance().student.marks.Remove(subj);
         }
         public static void Back()
         {
@@ -141,13 +191,13 @@ namespace shurup
             menu.AddItem("Удалить студента", DeleteStudentCommand);
             menu.AddItem("Показать отличников", ShowHighAchieversCommand);
             menu.AddItem("Показать неуспевающих", ShowLowAchieversCommand);
-            submenu.AddItem("Изменить фамилию", ChangeLastName);
-            submenu.AddItem("Изменить имя", ChangeFirstName);
-            submenu.AddItem("Изменить отчество", ChangeMiddleName);
-            submenu.AddItem("Изменить группу", ChangeGroup);
+            submenu.AddItem("Изменить фамилию", EditLastNameCommand);
+            submenu.AddItem("Изменить имя", EditFirstNameCommand);
+            submenu.AddItem("Изменить отчество", EditMiddleNameCommand);
+            submenu.AddItem("Изменить группу", EditGroupCommand);
             submenu.AddItem("Добавить оценку", AddMark);
-            submenu.AddItem("Изменить оценку", ChangeMark);
-            submenu.AddItem("Удалить оценку", RemoveMark);
+            submenu.AddItem("Изменить оценку", EditMarkCommand);
+            submenu.AddItem("Удалить оценку", DeleteMarkCommand);
             menu.Run();
         }
     }
