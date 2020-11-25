@@ -137,7 +137,7 @@ namespace shurup
             }
             Console.Write("Введите оценку: ");
             int mark = Convert.ToInt32(Console.ReadLine());
-            EditContext.GetInstance().student.marks[subj] = mark;
+            EditContext.GetInstance().student.marks.Add(subj, mark);
         }
         public static void EditMarkCommand()
         {
@@ -157,7 +157,7 @@ namespace shurup
             }
             Console.Write("Введите оценку: ");
             int mark = Convert.ToInt32(Console.ReadLine());
-            EditContext.GetInstance().student.marks.Add(subj, mark);
+            EditContext.GetInstance().student.marks[subj] = mark;
         }
         public static void DeleteMarkCommand()
         {
@@ -175,7 +175,16 @@ namespace shurup
                     break;
                 }
             }
-            EditContext.GetInstance().student.marks.Remove(subj);
+            Console.Write($"Вы уверены, что хотите удалить оценку по предмету {subj}? [Y/N]");
+            char danet = Convert.ToChar(Console.ReadLine());
+            if (danet == 'Y' || danet == 'y')
+            {
+                EditContext.GetInstance().student.marks.Remove(subj);
+            }
+            else
+            {
+                Console.Write("Ладно");
+            }
         }
         public static void Back()
         {
