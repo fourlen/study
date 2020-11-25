@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.IO;
 
 namespace shurup
 {
@@ -8,7 +11,10 @@ namespace shurup
     {
         private static StudentsRegistry instance = null;
         private List<Student> students = new List<Student>();
-        private StudentsRegistry() { }
+        private StudentsRegistry() 
+        {
+            Load();
+        }
         public void addStudent(Student student)
         {
             students.Add(student);
@@ -45,6 +51,22 @@ namespace shurup
                 visitor.visitStudent(i, students[i]);
             }
             visitor.finishVisit();
+        }
+        public void Save()
+        {
+            FileStream file = new FileStream("C:/Users/obori/OneDrive/Рабочий стол/students.txt", FileMode.Create, FileAccess.Write);
+            StreamWriter sr = new StreamWriter(file);
+            string json = JsonSerializer.Serialize(students);
+            sr.Write(json);
+            file.Close();
+        }
+        private void Load()
+        {
+            FileStream file = new FileStream("C:/Users/obori/OneDrive/Рабочий стол/students.txt", FileMode.Open, FileAccess.Read);
+            StreamReader sr = new StreamReader(file);
+            string json = sr.ReadToEnd();
+            file.Close();
+            students = JsonSerializer.Deserialize<List<Student>>(json);
         }
     }
 }

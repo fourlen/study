@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-
+using System.Text.Json;
 
 namespace shurup
 {
@@ -31,6 +31,7 @@ namespace shurup
             student.group = group;
             StudentsRegistry.GetInstance().addStudent(student);
             Console.WriteLine();
+            StudentsRegistry.GetInstance().Save();
         }
         public static void DeleteStudentCommand()
         {
@@ -48,6 +49,7 @@ namespace shurup
             {
                 Console.WriteLine("Ладно.");
             }
+            StudentsRegistry.GetInstance().Save();
         }
         public static void ShowHighAchieversCommand()
         {
@@ -100,24 +102,28 @@ namespace shurup
             Console.Write("Введите фамилию: ");
             string lastname = Console.ReadLine();
             EditContext.GetInstance().student.lastname = lastname;
+            StudentsRegistry.GetInstance().Save();
         }
         public static void EditFirstNameCommand()
         {
             Console.Write("Введите имя: ");
             string firstname = Console.ReadLine();
             EditContext.GetInstance().student.firstname = firstname;
+            StudentsRegistry.GetInstance().Save();
         }
         public static void EditMiddleNameCommand()
         {
             Console.Write("Введите отчество: ");
             string middlename = Console.ReadLine();
             EditContext.GetInstance().student.middlename = middlename;
+            StudentsRegistry.GetInstance().Save();
         }
         public static void EditGroupCommand()
         {
             Console.Write("Введите группу: ");
             string group = Console.ReadLine();
             EditContext.GetInstance().student.group = group;
+            StudentsRegistry.GetInstance().Save();
         }
         public static void AddMark() 
         {
@@ -138,13 +144,14 @@ namespace shurup
             Console.Write("Введите оценку: ");
             int mark = Convert.ToInt32(Console.ReadLine());
             EditContext.GetInstance().student.marks.Add(subj, mark);
+            StudentsRegistry.GetInstance().Save();
         }
         public static void EditMarkCommand()
         {
             if (EditContext.GetInstance().student.marks.Count == 0)
             {
                 Console.WriteLine("У студента нет оценок ни по одному предмету");
-                throw new NoSubjectsException("У студента нет оценок ни по одному предмету");
+                return;
             } else
             {
                 string subj = "";
@@ -165,6 +172,7 @@ namespace shurup
                 int mark = Convert.ToInt32(Console.ReadLine());
                 EditContext.GetInstance().student.marks[subj] = mark;
             }
+            StudentsRegistry.GetInstance().Save();
         }
         public static void DeleteMarkCommand()
         {
@@ -192,6 +200,7 @@ namespace shurup
             {
                 Console.Write("Ладно");
             }
+            StudentsRegistry.GetInstance().Save();
         }
         public static void Back()
         {
