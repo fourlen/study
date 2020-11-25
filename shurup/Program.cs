@@ -141,6 +141,11 @@ namespace shurup
         }
         public static void EditMarkCommand()
         {
+            if (EditContext.GetInstance().student.marks.Count == 0)
+            {
+                Console.WriteLine("У студента нет оценок ни по одному предмету");
+                throw new NoSubjectsException("У студента нет оценок ни по одному предмету");
+            }
             string subj = "";
             while (true)
             {
