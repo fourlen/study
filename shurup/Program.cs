@@ -145,24 +145,26 @@ namespace shurup
             {
                 Console.WriteLine("У студента нет оценок ни по одному предмету");
                 throw new NoSubjectsException("У студента нет оценок ни по одному предмету");
-            }
-            string subj = "";
-            while (true)
+            } else
             {
-                Console.Write("Введите предмет: ");
-                subj = Console.ReadLine();
-                if (!EditContext.GetInstance().student.marks.ContainsKey(subj))
+                string subj = "";
+                while (true)
                 {
-                    Console.WriteLine("Оценки по этому предмету ещё нет");
+                    Console.Write("Введите предмет: ");
+                    subj = Console.ReadLine();
+                    if (!EditContext.GetInstance().student.marks.ContainsKey(subj))
+                    {
+                        Console.WriteLine("Оценки по этому предмету ещё нет");
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
-                else
-                {
-                    break;
-                }
+                Console.Write("Введите оценку: ");
+                int mark = Convert.ToInt32(Console.ReadLine());
+                EditContext.GetInstance().student.marks[subj] = mark;
             }
-            Console.Write("Введите оценку: ");
-            int mark = Convert.ToInt32(Console.ReadLine());
-            EditContext.GetInstance().student.marks[subj] = mark;
         }
         public static void DeleteMarkCommand()
         {
