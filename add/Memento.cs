@@ -4,8 +4,7 @@ using System.Text;
 
 namespace add
 {
-    interface Cola
+    interface Memento
     {
-        public Cola Copy();
     }
 }
