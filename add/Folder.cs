@@ -14,11 +14,10 @@ namespace add
         }
         public FileSystemObject Copy()
         {
-            FileSystem fs = new FileSystem();
             Folder copyfolder = new Folder(name);
-            for (int i = 0; i < fs.folder.files.Count; i++)
+            for (int i = 0; i < files.Count; i++)
             {
-                copyfolder.files.Add(fs.folder.files[i].Copy());
+                copyfolder.files.Add(files[i].Copy());
             }
             return copyfolder;
         }

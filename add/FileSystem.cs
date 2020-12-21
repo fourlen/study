@@ -23,7 +23,7 @@ namespace add
         public void Restore(Memento memento)
         {
             MementoReal mr = (MementoReal)memento;
-            folder = mr.root;
+            folder = (Folder)mr.root.Copy();
         }
     }
 }
