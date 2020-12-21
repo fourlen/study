@@ -6,7 +6,7 @@ namespace add
 {
     class CareTaker
     {
-        public List<Memento> saves { get; set; } = new List<Memento>();
+        private List<Memento> saves = new List<Memento>();
         public void Save(Memento save)
         {
             saves.Add(save);

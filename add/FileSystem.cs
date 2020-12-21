@@ -6,13 +6,13 @@ namespace add
 {
     class FileSystem
     {
-        public Folder folder { get; set; }
+        public Folder folder = new Folder("Корневая папка");
         private class MementoReal : Memento
         {
             public Folder root { get; set; }
             public MementoReal(FileSystemObject _root)
             {
-                root = (Folder)_root;
+                root = (Folder)_root.Copy();
             }
         }
         public Memento CreateMemento()

@@ -10,12 +10,8 @@ namespace add
     {
         static void Main(string[] args)
         {
-            //короче надо сделать метод, который отображает файлы и папки в папке, создать папку, напихать туда папок, сделать снимок, изменить, восстановить
             FileSystem fs = new FileSystem();
-           
             CareTaker cr = new CareTaker();
-            Folder mainpapka = new Folder("Корневая папка");
-            fs.folder = mainpapka;
             FileSystemObject file1 = new File("Файл 1");
             fs.folder.files.Add(file1);
             Folder papka2 = new Folder("Подпапка");
