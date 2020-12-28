@@ -7,7 +7,7 @@ namespace add
     class BigEmplyee : Employee
     {
         private int chance;
-        private Department dep;
+        public Department dep;
         public BigEmplyee(int ch, Department _dep) :
             base(ch)
         {
@@ -26,7 +26,9 @@ namespace add
             if (HowLongIsWorking == -1)
             {
                 task = _task;
+                return;
             }
+            dep.tasksord.Add(task);
         }
     }
 }

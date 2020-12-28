@@ -6,14 +6,12 @@ namespace add
 {
     class Task
     {
-        public double DesignTime { get; set; }
-        public double FrontTime { get; set; }
-        public double BackTime { get; set; }
+        public List<int> times { get; set; } = new List<int>();
         public Task(int dt, int ft, int bt)
         {
-            DesignTime = dt;
-            FrontTime = ft;
-            BackTime = bt;
+            times.Add(dt);
+            times.Add(ft);
+            times.Add(bt);
         }
     }
 }

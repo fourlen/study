@@ -6,10 +6,11 @@ namespace add
 {
     class Department : Subscriber
     {
+        public int number;
         private BigEmplyee nachal;
         public List<Employee> employees = new List<Employee>();
         private List<Subscriber> subscribers = new List<Subscriber>();
-        private List<Task> tasksord = new List<Task>();
+        public List<Task> tasksord = new List<Task>();
         public void Subscribe(Subscriber sub)
         {
             subscribers.Add(sub);
