@@ -4,7 +4,8 @@ using System.Text;
 
 namespace add
 {
-    interface Memento
+    interface Subscriber
     {
+        public void Update(Task task);
     }
 }
