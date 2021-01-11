@@ -10,8 +10,11 @@ namespace add
         public int Complited { get; set; } = 0;
         public void Update(Task task)
         {
-            Complited++;
-            dep.ShowStat();
+            if (Complited == 10)
+            {
+                Complited++;
+                dep.ShowStat();
+            }
         }
     }
 }

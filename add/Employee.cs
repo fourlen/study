@@ -28,6 +28,12 @@ namespace add
                 {
                     points += 1;
                     nachal.dep.Notify(task);
+                    HowLongIsWorking = -1;
+                }
+                else
+                {
+                    points -= 1;
+                    nachal.points -= 1;
                 }
             }
         }
