@@ -10,7 +10,11 @@ namespace add
         static void Main(string[] args)
         {
             Random random = new Random();
-            Department dep = new Department(random.Next(1,11));
+            Department depDesign = new Department(random.Next(1,11));
+            Department depFront = new Department(random.Next(1, 11));
+            Department depBackEnd = new Department(random.Next(1, 11));
+            depFront.Subscribe(depDesign);
+            depBackEnd.Subscribe(depFront);
             Task[] tasks = new Task[10];
             for (int i = 0; i < 10; i++)
             {
@@ -18,9 +22,14 @@ namespace add
             }
             for (int i = 0; i < tasks.Length; i++)
             {
-                dep.Update(tasks[i]);
+                depDesign.Update(tasks[i]);
             }
-            dep.ShowStat();
+            Console.WriteLine("Отдел дизайна:");
+            depDesign.ShowStat();
+            Console.WriteLine("Отдел фронт-энда");
+            depFront.ShowStat();
+            Console.WriteLine("Отдел бэк-энда");
+            depBackEnd.ShowStat();
         }
     }
 }
