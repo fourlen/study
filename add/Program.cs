@@ -14,6 +14,7 @@ namespace add
             Department depFront = new Department(random.Next(1, 11));
             Department depBackEnd = new Department(random.Next(1, 11));
             Client client = new Client();
+            depBackEnd.Subscribe(client);
             depFront.Subscribe(depDesign);
             depBackEnd.Subscribe(depFront);
             Task[] tasks = new Task[10];

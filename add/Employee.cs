@@ -21,7 +21,7 @@ namespace add
             {
                 HowLongIsWorking += 1;
             }
-            if (task != null && HowLongIsWorking > task.times[nachal.dep.number])
+            if (task != null && nachal != null && HowLongIsWorking > task.times[nachal.dep.number])
             {
                 Random random = new Random();
                 if (random.Next(0, 100) <= chance)
