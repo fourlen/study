@@ -21,6 +21,7 @@ namespace add
                 empl.nachal = nachal;
                 employees.Add(empl);
             }
+            employees.Add(nachal);
         }
         public void Subscribe(Subscriber sub)
         {
@@ -58,6 +59,10 @@ namespace add
                     employees[i].task = tasksord[0];
                     tasksord.RemoveAt(0);
                 }
+            }
+            for (int i = 0; i < employees.Count; i++)
+            {
+                employees[i].Work();
             }
         }
     }

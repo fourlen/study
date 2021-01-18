@@ -44,12 +44,12 @@ namespace shurup
             if (danet == 'Y' || danet == 'y')
             {
                 StudentsRegistry.GetInstance().removeStudent(n - 1);
+                StudentsRegistry.GetInstance().Save();
             }
             else
             {
                 Console.WriteLine("Ладно.");
             }
-            StudentsRegistry.GetInstance().Save();
         }
         public static void ShowHighAchieversCommand()
         {
@@ -83,7 +83,7 @@ namespace shurup
                     Console.WriteLine("Студента с таким номером не существует");
                 }
             }
-            EditContext.GetInstance().student = StudentsRegistry.GetInstance().GetStudent(n);
+            EditContext.GetInstance().student = StudentsRegistry.GetInstance().GetStudent(n - 1);
         }
         public static void ShowSelectedCommand()
         {
@@ -195,12 +195,12 @@ namespace shurup
             if (danet == 'Y' || danet == 'y')
             {
                 EditContext.GetInstance().student.marks.Remove(subj);
+                StudentsRegistry.GetInstance().Save();
             }
             else
             {
                 Console.Write("Ладно");
             }
-            StudentsRegistry.GetInstance().Save();
         }
         public static void Back()
         {
@@ -208,11 +208,13 @@ namespace shurup
         }
         static void Main(string[] args)
         {
-
             Menu menu = new Menu();
             menu.AddItem("Список студентов", ListStudentsCommand);
             menu.AddItem("Добавить студента", AddStudentCommand);
             Menu submenu = menu.AddSubmenu("Редактироват студента");
+            submenu.Setstartup_command(SelectStudentCommand);
+            submenu.Setbefere_select_command(ShowSelectedCommand);
+            submenu.Settear_down_command(DeselectStudentCommand);
             menu.AddItem("Удалить студента", DeleteStudentCommand);
             menu.AddItem("Показать отличников", ShowHighAchieversCommand);
             menu.AddItem("Показать неуспевающих", ShowLowAchieversCommand);

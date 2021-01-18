@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
 namespace shurup
 {
     class LowAchieverVisitor : StudentVisitor
@@ -30,7 +29,7 @@ namespace shurup
                 }
                 _has_students = true;
             }
-            if (!neusp)
+            if (neusp)
             {
                 Console.WriteLine($"==={n + 1}===");
                 student.printLong();
@@ -38,7 +37,7 @@ namespace shurup
         }
         public void finishVisit()
         {
-            if (!_has_students)
+            if (_has_students)
             {
                 Console.WriteLine("Студентов нет");
             }

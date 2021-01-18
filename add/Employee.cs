@@ -21,10 +21,10 @@ namespace add
             {
                 HowLongIsWorking += 1;
             }
-            if (HowLongIsWorking > task.times[nachal.dep.number])
+            if (task != null && HowLongIsWorking > task.times[nachal.dep.number])
             {
                 Random random = new Random();
-                if (random.Next(0, chance + 1) <= chance)
+                if (random.Next(0, 100) <= chance)
                 {
                     points += 1;
                     nachal.dep.Notify(task);

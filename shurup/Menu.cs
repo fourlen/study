@@ -8,9 +8,21 @@ namespace shurup
     {
         private List<MenuItem> items = new List<MenuItem>();
         private bool main;
-        public Action startup_command { get; set; }
-        public Action before_select_command { get; set; } 
-        public Action tear_down_command { get; set; }
+        public Action startup_command = () => { };
+        public Action before_select_command = () => { };
+        public Action tear_down_command = () => { };
+        public void Setstartup_command(Action command)
+        {
+            startup_command = command;
+        }
+        public void Setbefere_select_command(Action command)
+        {
+            before_select_command = command;
+        }
+        public void Settear_down_command(Action command)
+        {
+            tear_down_command = command;
+        }
         public Menu():
             base("")
         {

@@ -4,6 +4,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.IO;
+using System.Reflection;
 
 namespace shurup
 {
@@ -46,27 +47,35 @@ namespace shurup
         public void VisitStudent(StudentVisitor visitor)
         {
             visitor.startVisit();
-            for (int i = 0; i < students.Count; i++)
-            {
-                visitor.visitStudent(i, students[i]);
-            }
+            for (int i = 0; i < students.Count; i++) { visitor.visitStudent(i, students[i]); }
             visitor.finishVisit();
         }
         public void Save()
         {
-            FileStream file = new FileStream("C:/Users/obori/OneDrive/Рабочий стол/students.txt", FileMode.Create, FileAccess.Write);
+            FileStream file = new FileStream($"{GetExecutingDirectory()}/students.txt", FileMode.Create, FileAccess.Write);
             StreamWriter sr = new StreamWriter(file);
             string json = JsonSerializer.Serialize(students);
             sr.Write(json);
+            sr.Close();
             file.Close();
         }
         private void Load()
         {
-            FileStream file = new FileStream("C:/Users/obori/OneDrive/Рабочий стол/students.txt", FileMode.Open, FileAccess.Read);
-            StreamReader sr = new StreamReader(file);
-            string json = sr.ReadToEnd();
-            file.Close();
-            students = JsonSerializer.Deserialize<List<Student>>(json);
+            if (File.Exists($"{GetExecutingDirectory()}/students.txt")) 
+            {
+                FileStream file = new FileStream($"{GetExecutingDirectory()}/students.txt", FileMode.Open, FileAccess.Read);
+                StreamReader sr = new StreamReader(file);
+                string json = sr.ReadToEnd();
+                sr.Close();
+                file.Close();
+                students = JsonSerializer.Deserialize<List<Student>>(json);
+            }
+            
+        }
+        private static string GetExecutingDirectory()
+        {
+            var location = new Uri(Assembly.GetEntryAssembly().GetName().CodeBase);
+            return new FileInfo(location.AbsolutePath).Directory.FullName;
         }
     }
 }

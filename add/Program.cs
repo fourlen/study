@@ -13,6 +13,7 @@ namespace add
             Department depDesign = new Department(random.Next(1,11));
             Department depFront = new Department(random.Next(1, 11));
             Department depBackEnd = new Department(random.Next(1, 11));
+            Client client = new Client();
             depFront.Subscribe(depDesign);
             depBackEnd.Subscribe(depFront);
             Task[] tasks = new Task[10];
@@ -22,7 +23,14 @@ namespace add
             }
             for (int i = 0; i < tasks.Length; i++)
             {
-                depDesign.Update(tasks[i]);
+                if (i < tasks.Length)
+                {
+                    depDesign.Update(tasks[i]);
+                }
+                depDesign.Work();
+                depFront.Work();
+                depBackEnd.Work();
+                Console.WriteLine(depDesign.tasksord.Count);
             }
             Console.WriteLine("Отдел дизайна:");
             depDesign.ShowStat();
@@ -30,6 +38,7 @@ namespace add
             depFront.ShowStat();
             Console.WriteLine("Отдел бэк-энда");
             depBackEnd.ShowStat();
+            //почему-то такс не доходит до сотрудника
         }
     }
 }
